@@ -3,9 +3,6 @@ import javax.swing.JFrame;
 
 class Main {
     public static void main(String[] args) throws IOException {
-
-        // TextoPanel textoPanel = new TextoPanel();
-        // textoPanel.imprimirTexto(FileChooser.getSelectedFilePath());
         
         // Cria a janela principal
         JFrame frame = new JFrame("Opções");
@@ -18,5 +15,8 @@ class Main {
         // Exibe a janela
         frame.pack();
         frame.setVisible(true);
+
+        // String frequencyString = "Brasil: 20 brasília: 10 montanha: 5 alta: 3";
+        // GraficoF chart = new GraficoF("Word Frequency Chart", frequencyString);
     }
 }

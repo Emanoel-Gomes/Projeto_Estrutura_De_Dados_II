@@ -61,8 +61,7 @@ public class OpcoesPanel extends JPanel implements ActionListener {
             case "Frequentes":
                 System.out.println("Você selecionou a opção Frequentes.");
                 String a = WordCounter.getFrequencia(FileChooser.getSelectedFilePath());
-                TextoPanel.imprimirTexto(GraficoFrequencia.criarGrafico(a));
-                GraficoFrequencia.criarGrafico(a);
+                GraficoF chart = new GraficoF("Word Frequency Chart", a);
                 
                 break;
             case "Adicionar":
