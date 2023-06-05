@@ -5,7 +5,7 @@ import java.io.File;
 
 public class FileChooser {
 
-    private static String selectedFilePath = "";
+    static String selectedFilePath = "";
 
     public static String chooseFile() {
         JFileChooser chooser = new JFileChooser();

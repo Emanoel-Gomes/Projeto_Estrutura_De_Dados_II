@@ -66,26 +66,20 @@ public class PainelTexto extends JFrame implements ActionListener {
             List<String> sugestoes = trie.sugerirPalavras(palavraPesquisada);
             atualizarSugestoes(sugestoes);
         } else if (event.getSource() == abrirArquivo) {
-            int result = fileChooser.showOpenDialog(this);
-            if (result == JFileChooser.APPROVE_OPTION) {
-                File arquivo = fileChooser.getSelectedFile();
-                try {
-                    FileReader leitor = new FileReader(arquivo);
-                    BufferedReader buffer = new BufferedReader(leitor);
-                    String linha;
-                    StringBuilder texto = new StringBuilder();
-                    while ((linha = buffer.readLine()) != null) {
-                        texto.append(linha).append("\n"); // adiciona a quebra de linha no final de cada linha lida
-                    }
-                    buffer.close();
-                    areaTexto.setText(texto.toString());
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(this, "Erro ao abrir o arquivo: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-                }
+            FileChooser.chooseFile();
+            try {
+                ES_Arquivo.ler(FileChooser.getSelectedFilePath());
+                areaTexto.append(ES_Arquivo.getTexto());
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
+            
         } else if (event.getSource() == btnPalavrasFrequentes) {
             // código para exibir as palavras mais frequentes
             System.out.println("Botão 'Palavras Frequentes' pressionado");
+            String a = WordCounter.getFrequencia(FileChooser.getSelectedFilePath());
+            GraficoF gf = new GraficoF("Frequencia", a);
         } else if (event.getSource() == btnAdicionarTexto) {
             // código para adicionar texto à área de texto
             System.out.println("Botão 'Adicionar Texto' pressionado");
