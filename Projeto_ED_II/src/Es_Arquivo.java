@@ -5,7 +5,7 @@ class ES_Arquivo {
     public static String texto = "";
     
     public static void ler(String dir) throws IOException {
-        try (BufferedReader lerBuff = new BufferedReader(new FileReader(dir))) {
+        try (BufferedReader lerBuff = new BufferedReader(new InputStreamReader(new FileInputStream(dir), "UTF-8"))) { 
             String linha = "";
             while (true) {
                 if (linha != null) {
@@ -15,7 +15,9 @@ class ES_Arquivo {
                 }
                 linha = lerBuff.readLine();
             }
-        }
+        } 
+        // jogar o texto na trie
+        PrefixTrie.insert(texto);
     }
 
     public static String buscarParagrafosComPalavra(String texto, String palavra) {
